@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ejercicio_19.Boligrafo
+namespace Ejercicio_19.Boligrafos
 {
     class Boligrafo
     {
@@ -13,6 +13,8 @@ namespace Ejercicio_19.Boligrafo
         public Boligrafo(ConsoleColor color, int tinta)
         {
             this._color = color;
+            if (this.tinta > 100)
+                tinta = 100;
             this.tinta = tinta;
         }
 
@@ -30,18 +32,19 @@ namespace Ejercicio_19.Boligrafo
         {
             if (gasto > this.GetTinta())
             {
-                Console.Write("No hay tinta suficiente");
+                Console.WriteLine("No hay tinta suficiente");
                 return false;
             }
             Console.ForegroundColor = this.GetColor();
             Console.WriteLine("Pintando... ");
-            Console.ForegroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            this.tinta -= gasto;
             return true;
         }
 
         public void Recargar()
         {
-            this.tinta += 100;
+            this.tinta = 100;
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Ejercicio_19.Boligrafo;
+using Ejercicio_19.Boligrafos;
 
 namespace Ejercicio_19
 {
@@ -25,6 +25,19 @@ namespace Ejercicio_19
         static void Main(string[] args)
         {
             Console.Title = "Ejercicio Nro. 19";
+
+            Boligrafo boligrafo1 = new Boligrafo(ConsoleColor.Blue, 100);
+            Boligrafo boligrafo2 = new Boligrafo(ConsoleColor.Red, 50);
+
+            boligrafo1.Pintar(100);
+            boligrafo2.Pintar(75);
+            boligrafo2.Recargar();
+            boligrafo2.Pintar(75);
+
+            Console.WriteLine("Estado del boligrafo 1: Tinta => {0}, Color => {1}.", boligrafo1.GetTinta(), boligrafo1.GetColor());
+            Console.WriteLine("Estado del boligrafo 2: Tinta => {0}, Color => {1}.", boligrafo2.GetTinta(), boligrafo2.GetColor());
+
+            Console.ReadKey();
         }
     }
 }
