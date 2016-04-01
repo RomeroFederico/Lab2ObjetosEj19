@@ -8,43 +8,66 @@ namespace Ejercicio_19.Boligrafos
     class Boligrafo
     {
         private ConsoleColor _color;
-        private int tinta;
+        private int _tinta;
 
+        /// <summary>
+        /// Crea un nuevo boligrafo.
+        /// </summary>
+        /// <param name="color">
+        /// Define el color de tinta que tendra el boligrafo.
+        /// </param>
+        /// <param name="tinta">
+        /// Define la cantidad de tinta que tendra el boligrafo.
+        /// </param>
         public Boligrafo(ConsoleColor color, int tinta)
         {
             this._color = color;
-            if (this.tinta > 100)
+            if (tinta > 100)
                 tinta = 100;
-            this.tinta = tinta;
+            else if (tinta < 0)
+                tinta = 0;
+            this._tinta = tinta;
         }
 
+        /// <summary>
+        /// Retorna el color de tinta del boligrafo.
+        /// </summary>
         public ConsoleColor GetColor()
         {
             return this._color;
         }
 
+        /// <summary>
+        /// Retorna la tinta disponible que tiene el boligrafo.
+        /// </summary>
         public int GetTinta()
         {
-            return this.tinta;
+            return this._tinta;
         }
 
+        /// <summary>
+        /// Pinta con el boligrafo solo si alcanza la tinta.
+        /// </summary>
+        /// <param name="gasto">
+        /// Cantidad de tinta que se utilizara.
+        /// </param>
+        /// <returns>
+        /// Retornara true si ha alcanzado la tinta.
+        /// </returns>
         public bool Pintar(int gasto)
         {
             if (gasto > this.GetTinta())
-            {
-                Console.WriteLine("No hay tinta suficiente");
                 return false;
-            }
-            Console.ForegroundColor = this.GetColor();
-            Console.WriteLine("Pintando... ");
-            Console.ForegroundColor = ConsoleColor.White;
-            this.tinta -= gasto;
+            this._tinta -= gasto;
             return true;
         }
 
+        /// <summary>
+        /// Recarga el boligrafo, estableciendo la tinta en 100.
+        /// </summary>
         public void Recargar()
         {
-            this.tinta = 100;
+            this._tinta = 100;
         }
     }
 }

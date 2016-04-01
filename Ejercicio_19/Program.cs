@@ -29,10 +29,29 @@ namespace Ejercicio_19
             Boligrafo boligrafo1 = new Boligrafo(ConsoleColor.Blue, 100);
             Boligrafo boligrafo2 = new Boligrafo(ConsoleColor.Red, 50);
 
-            boligrafo1.Pintar(100);
-            boligrafo2.Pintar(75);
+            if (boligrafo1.Pintar(100))
+            {
+                Console.ForegroundColor = boligrafo1.GetColor();
+                Console.WriteLine("Pintando... ");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+                Console.WriteLine("No hay tinta suficiente");
+            if (boligrafo2.Pintar(75))
+            {
+                Console.ForegroundColor = boligrafo2.GetColor();
+                Console.WriteLine("Pintando... ");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+                Console.WriteLine("No hay tinta suficiente");
             boligrafo2.Recargar();
-            boligrafo2.Pintar(75);
+            if (boligrafo2.Pintar(75))
+            {
+                Console.ForegroundColor = boligrafo2.GetColor();
+                Console.WriteLine("Pintando... ");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
             Console.WriteLine("Estado del boligrafo 1: Tinta => {0}, Color => {1}.", boligrafo1.GetTinta(), boligrafo1.GetColor());
             Console.WriteLine("Estado del boligrafo 2: Tinta => {0}, Color => {1}.", boligrafo2.GetTinta(), boligrafo2.GetColor());
